@@ -1,0 +1,50 @@
+<h4 class="dispaly-4">Sensor</h4>
+<hr>
+<form [formGroup]="addSensorForm" (ngSubmit)="addSensorForm.valid && onAddSubmit()" novalidate>
+<!-- <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)"> -->
+    <!-- <input type="hidden"  name="id" #id="ngModel" [(ngModel)]="formData.id">
+  <div class="form-group">
+    <label>Nazwa:</label>
+      <input name="name" #name="ngModel" [(ngModel)]="formData.name" class="form-control"
+      (keyup)="updateTotal()" [class.is-invalid]="!isValid && formData.Quantity==0">
+  </div>
+
+  <div class="form-group">
+    <label>1-Wire Adres:</label>
+      <input name="address" #address="ngModel" [(ngModel)]="formData.address" class="form-control"
+      (keyup)="updateTotal()" [class.is-invalid]="!isValid && formData.Quantity==0">
+  </div>
+  
+  <div class="form-group">
+    <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
+    <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Close</button>
+  </div> -->
+    <div>
+        <mat-form-field appearance="fill" class="full-width-field">
+            <input id="name"
+                    matInput
+                    formControlName="name"
+                    [(ngModel)]="sensor.name"
+                    placeholder="Podaj nazwę"/>
+            <mat-hint>np. Temperatura z zewnąrz</mat-hint>
+        </mat-form-field>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <div>
+        <mat-form-field appearance="fill" class="full-width-field">
+                <input id="address"
+                        matInput
+                        formControlName="address"
+                        [(ngModel)]="sensor.address"
+                        placeholder="Podaj adres"/>
+                <mat-hint>np. 28-000008d6bac6</mat-hint>
+            </mat-form-field>
+    </div>
+    <br>
+    <div>
+        <button mat-button type="submit" class="mat-raised-button mat-primary" [disabled]="!addSensorForm.valid">Zapisz</button>
+        <button mat-button class="mat-raised-button mat-primary" [mat-dialog-close]>Zamknij</button>
+    </div>
+</form>

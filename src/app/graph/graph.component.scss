@@ -1,0 +1,21 @@
+.data-table-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    
+    table {
+        margin: 16px;
+
+        .text-center {
+            text-align: center;
+        }
+    }
+}
+
+.center-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

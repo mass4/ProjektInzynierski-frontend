@@ -1,18 +1,56 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
+import { ChartModule } from 'angular-highcharts';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
+//import { OutputGraphComponent } from './output-graph/output-graph.component';
+import {HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
+import { HomeModule } from './home/home.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { GraphModule } from './graph/graph.module';
+import { FormsModule } from '@angular/forms';
+import {ReadingService} from './reading.service'
+import { RestApiService } from './shared/rest-api.service';
+import { parse } from 'date-fns';
+import { SensorComponent } from './sensor/sensor.component';
+import { TemperatureComponent } from './sensorForm/temperature/temperature.component';
+import { MoistureComponent } from './sensorForm/moisture/moisture.component';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    //OutputGraphComponent,
+    routingComponents,
+    SensorComponent,
+    TemperatureComponent,
+    MoistureComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    MaterialModule,
+    AppRoutingModule,
+    ChartModule,
+    HttpClientModule,
+    HomeModule,
+    GraphModule,
+    DashboardModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [],
+  entryComponents:[
+    TemperatureComponent,
+    MoistureComponent
+  ],
+  providers: [
+    ReadingService,
+    RestApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

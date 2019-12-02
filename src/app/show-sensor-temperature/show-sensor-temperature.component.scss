@@ -1,0 +1,44 @@
+table {
+    width: 100%;
+  }
+
+.mat-button.mat-success:hover,
+.mat-stroked-button.mat-success:hover {
+  background-color: #1a632a;
+}
+
+.mat-raised-button.mat-success,
+.mat-flat-button.mat-success,
+.mat-fab.mat-success,
+.mat-mini-fab.mat-success {
+  color: #f0fff3;
+  background-color: #218135;
+}
+
+.mat-button.mat-edit:hover,
+.mat-stroked-button.mat-edit:hover {
+  background-color: #da981f;
+}
+
+.mat-raised-button.mat-edit,
+.mat-flat-button.mat-edit,
+.mat-fab.mat-edit,
+.mat-mini-fab.mat-edit {
+  color: #f0fff3;
+  background-color: #f8a814;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  * {
+    margin: 8px;
+  }
+}
+
+.table-space td, .table-space th {
+  padding: 0 8px;
+}

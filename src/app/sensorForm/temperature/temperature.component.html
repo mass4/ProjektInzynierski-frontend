@@ -1,0 +1,32 @@
+<h4 class="dispaly-4">Sensor</h4>
+<hr>
+<form [formGroup]="addSensorForm" (ngSubmit)="addSensorForm.valid && onAddSubmit()" novalidate>
+    <div>
+        <mat-form-field appearance="fill" class="full-width-field">
+            <input id="name"
+                    matInput
+                    formControlName="name"
+                    [(ngModel)]="sensor.name"
+                    placeholder="Podaj nazwę"/>
+            <mat-hint>np. Temperatura z zewnąrz</mat-hint>
+        </mat-form-field>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <div>
+        <mat-form-field appearance="fill" class="full-width-field">
+                <input id="address"
+                        matInput
+                        formControlName="address"
+                        [(ngModel)]="sensor.address"
+                        placeholder="Podaj adres"/>
+                <mat-hint>np. 28-000008d6bac6</mat-hint>
+            </mat-form-field>
+    </div>
+    <br>
+    <div>
+        <button mat-button type="submit" class="mat-raised-button mat-primary" [disabled]="!addSensorForm.valid">Zapisz</button>
+        <button mat-button class="mat-raised-button mat-primary" [mat-dialog-close]>Zamknij</button>
+    </div>
+</form>

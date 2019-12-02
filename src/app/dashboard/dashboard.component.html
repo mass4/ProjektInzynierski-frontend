@@ -1,0 +1,19 @@
+<mat-toolbar color="primary" class="navbar">
+    <div>
+      <button mat-button [routerLink]="['/home']"><mat-icon>home</mat-icon> WebApp</button>
+    </div>
+    <div>
+        <mat-menu #appMenu="matMenu">
+            <button mat-menu-item [routerLink]="['/home']">Strona główna</button>
+            <button mat-menu-item [matMenuTriggerFor]="sensorMenu">Sensory</button>
+        </mat-menu>
+  
+        <button mat-button [matMenuTriggerFor]="appMenu">Menu <mat-icon>list</mat-icon></button>
+  
+        <mat-menu #sensorMenu="matMenu">
+            <button mat-menu-item [routerLink]="['/temperaturesensors']">Temperatury</button>
+            <button mat-menu-item [routerLink]="['/moisturesensors']">Wilgotności</button>
+        </mat-menu>
+
+    </div>
+</mat-toolbar>
