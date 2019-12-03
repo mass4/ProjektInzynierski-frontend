@@ -12,7 +12,7 @@ import { MoistureSensor } from 'src/app/MoistureSensor';
 })
 export class RestApiService {
 
-  apiURL = 'http://localhost:8080';
+  apiURL = 'http://localhost:9090';
   dateRangeChanged = new Subject<DateRange>();
   dateRange: DateRange = new DateRange();
 
@@ -41,19 +41,19 @@ export class RestApiService {
   }
 
   getTemperatureReadingsBetween(begin : Date, end: Date) : Promise<Array<SensorReading>>{
-    return this.http.get<Array<SensorReading>>('http://localhost:8080/readings/temperature/' + begin+'/'+ end).toPromise();
+    return this.http.get<Array<SensorReading>>('http://localhost:9090/readings/temperature/' + begin+'/'+ end).toPromise();
   }
 
   getMoistureReadingsBetween(begin : Date, end: Date) : Promise<Array<SensorReading>>{
-    return this.http.get<Array<SensorReading>>('http://localhost:8080/readings/moisture/' + begin+'/'+ end).toPromise();
+    return this.http.get<Array<SensorReading>>('http://localhost:9090/readings/moisture/' + begin+'/'+ end).toPromise();
   }
 
   getTemperatureSensors(){
-    return this.http.get<Array<TemperatureSensor>>("http://localhost:8080/sensor/temperature").toPromise();
+    return this.http.get<Array<TemperatureSensor>>("http://localhost:9090/sensor/temperature").toPromise();
   }
 
   getMoistureSensors(){
-    return this.http.get<Array<MoistureSensor>>("http://localhost:8080/sensor/moisture").toPromise();
+    return this.http.get<Array<MoistureSensor>>("http://localhost:9090/sensor/moisture").toPromise();
   }
 
   getDateRange(){
@@ -61,7 +61,7 @@ export class RestApiService {
   }
 
   addTemperatureSensor(sensor: TemperatureSensor){
-    this.http.post('http://localhost:8080/sensor/temperature', sensor).subscribe(
+    this.http.post('http://localhost:9090/sensor/temperature', sensor).subscribe(
       response => console.log('poprawnie przeslano', response),
       error => console.log('error', error),
       () => {
@@ -72,7 +72,7 @@ export class RestApiService {
   }
 
   updateTemperatureSensor(sensor: TemperatureSensor){
-    this.http.put('http://localhost:8080/sensor/temperature/'+sensor.id, sensor).subscribe(
+    this.http.put('http://localhost:9090/sensor/temperature/'+sensor.id, sensor).subscribe(
       response => console.log('poprawnie przeslano', response),
       error => console.log('error', error),
       () => {
@@ -83,7 +83,7 @@ export class RestApiService {
   }
 
   deleteTemperatureSensor(index: number){
-    this.http.delete('http://localhost:8080/sensor/temperature/'+index).subscribe(
+    this.http.delete('http://localhost:9090/sensor/temperature/'+index).subscribe(
       response => console.log('poprawnie przeslano', response),
       error => console.log('error', error),
       () => {
@@ -94,7 +94,7 @@ export class RestApiService {
   }
 
   addMoistureSensor(sensor: MoistureSensor){
-    this.http.post('http://localhost:8080/sensor/moisture', sensor).subscribe(
+    this.http.post('http://localhost:9090/sensor/moisture', sensor).subscribe(
       response => console.log('poprawnie przeslano', response),
       error => console.log('error', error),
       () => {
@@ -105,7 +105,7 @@ export class RestApiService {
   }
 
   updateMoistureSensor(sensor: MoistureSensor){
-    this.http.put('http://localhost:8080/sensor/moisture/'+sensor.id, sensor).subscribe(
+    this.http.put('http://localhost:9090/sensor/moisture/'+sensor.id, sensor).subscribe(
       response => console.log('poprawnie przeslano', response),
       error => console.log('error', error),
       () => {
@@ -116,7 +116,7 @@ export class RestApiService {
   }
 
   deleteMoistureSensor(index: number){
-    this.http.delete('http://localhost:8080/sensor/moisture/'+index).subscribe(
+    this.http.delete('http://localhost:9090/sensor/moisture/'+index).subscribe(
       response => console.log('poprawnie przeslano', response),
       error => console.log('error', error),
       () => {
