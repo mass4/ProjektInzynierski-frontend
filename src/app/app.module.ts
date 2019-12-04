@@ -18,6 +18,7 @@ import { parse } from 'date-fns';
 import { SensorComponent } from './sensor/sensor.component';
 import { TemperatureComponent } from './sensorForm/temperature/temperature.component';
 import { MoistureComponent } from './sensorForm/moisture/moisture.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 
@@ -49,7 +50,8 @@ import { MoistureComponent } from './sensorForm/moisture/moisture.component';
   ],
   providers: [
     ReadingService,
-    RestApiService
+    RestApiService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

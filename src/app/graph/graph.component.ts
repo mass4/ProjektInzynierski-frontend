@@ -53,6 +53,9 @@ export class GraphComponent implements OnInit {
     else if (this.selected == 'month'){
       this.quickDate.beginDate.setDate(this.quickDate.beginDate.getDate()-30);
     }
+    else if (this.selected == 'year'){
+      this.quickDate.beginDate.setDate(this.quickDate.beginDate.getDate()-365);
+    }
     
     console.log(this.quickDate);
     this.restApiService.addDateRange(this.quickDate);

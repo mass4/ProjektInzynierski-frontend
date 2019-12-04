@@ -39,11 +39,25 @@ export class MoistureGraphComponent implements OnInit {
         credits: {
           enabled: false
         },
+        yAxis:{
+          title: {
+            text: "Wilgotność [%]"
+          }
+        },
         xAxis:{
           type: 'datetime',
           labels: {
             enabled: true, 
             }
+        },
+        time:{
+          useUTC: true,
+          timezoneOffset: -60
+        },
+        tooltip: {
+          xDateFormat: '%Y-%m-%d %H:%M:%S',
+          valueSuffix: ' %',
+          shared: true
         }
       });
     }

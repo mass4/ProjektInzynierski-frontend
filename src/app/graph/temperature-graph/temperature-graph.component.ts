@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { interval, Subscription } from 'rxjs';
 import { Chart } from 'angular-highcharts';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { seriesType } from 'highcharts';
+import { seriesType, YAxisTitleOptions } from 'highcharts';
 import { ReadingService } from 'src/app/reading.service';
 import { RestApiService } from 'src/app/shared/rest-api.service';
 import {DateRange} from 'src/app/DateRange';
@@ -44,22 +44,25 @@ export class TemperatureGraphComponent implements OnInit {
       credits: {
         enabled: false
       },
+      yAxis:{
+        title: {
+          text: "Temperatura [°C]"
+        }
+      },
       xAxis:{
         type: 'datetime',
         labels: {
           enabled: true, 
           }
       },
-      lang: {
-        months: [
-            'Janvier', 'Février', 'Mars', 'Avril',
-            'Mai', 'Juin', 'Juillet', 'Août',
-            'Septembre', 'Octobre', 'Novembre', 'Décembre'
-        ],
-        weekdays: [
-            'Dimanche', 'Lundi', 'Mardi', 'Mercredi',
-            'Jeudi', 'Vendredi', 'Samedi'
-        ]
+      time:{
+        useUTC: true,
+        timezoneOffset: -60
+      },
+      tooltip: {
+        xDateFormat: '%Y-%m-%d %H:%M:%S',
+        valueSuffix: ' °C',
+        shared: true
       }
     });
   }

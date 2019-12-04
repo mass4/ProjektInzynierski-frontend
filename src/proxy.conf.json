@@ -1,5 +1,5 @@
 {
-    "/*": {
+    "/re/dings/*": {
         "target": "http://localhost:9090",
         "secure": false,
         "logLevel": "debug"
