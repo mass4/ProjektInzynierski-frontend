@@ -6,7 +6,7 @@ const app = express();
 
 app.use(cors());
 
-const port = process.env.PORT || 4200;
+const port = process.env.PORT || 3001;
 
 app.use(express.static(__dirname + '/dist/my-app'));
 app.get('/*', (req,res) => res.sendFile(path.join(__dirname)));

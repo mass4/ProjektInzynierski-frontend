@@ -12,7 +12,7 @@ import { MoistureSensor } from 'src/app/MoistureSensor';
 export class RestApiService {
 
   //apiURL = 'http://192.168.43.101:9090';
-  apiURL = 'http://localhost:9090/api';
+  apiURL = 'http://192.168.0.101:9090/api';
   
   dateRangeChanged = new Subject<DateRange>();
   dateRange: DateRange = new DateRange();
