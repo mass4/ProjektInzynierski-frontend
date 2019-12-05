@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { TemperatureSensor } from 'src/app/TemperatureSensor';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { RestApiService } from 'src/app/shared/rest-api.service';

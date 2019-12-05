@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { element } from 'protractor';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { RestApiService } from 'src/app/shared/rest-api.service';
-import { Subscription, Observable } from 'rxjs';
-import {DateRange} from 'src/app/DateRange';
+import { DateRange } from 'src/app/DateRange';
 import { SensorReading } from '../SensorReading';
 
 class ActualSensor{
@@ -57,12 +54,10 @@ export class GraphComponent implements OnInit {
       this.quickDate.beginDate.setDate(this.quickDate.beginDate.getDate()-365);
     }
     
-    console.log(this.quickDate);
     this.restApiService.addDateRange(this.quickDate);
   }
 
   constructor(
-    private httpClient:HttpClient, 
     private formBuilder: FormBuilder, 
     private restApiService:RestApiService) {}
 
@@ -78,15 +73,9 @@ export class GraphComponent implements OnInit {
       ]]
 
     });
-
-    
-
   }
 
   onDateFormSubmit(){
-    console.log(this.calendarDateRange.beginDate);
-    console.log(this.calendarDateRange.endDate);
-
     this.restApiService.addDateRange(this.calendarDateRange);
   }
 
@@ -115,7 +104,6 @@ export class GraphComponent implements OnInit {
     var data: ActualSensor[] = new Array;
 
     readings.forEach(element => {
-      console.log(element.readings.length - 1);
       if(element.readings.length - 1>=0){
         data.push(new ActualSensor(element.name, element.readings[element.readings.length - 1].value));
       }

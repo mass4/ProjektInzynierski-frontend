@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError, Subject } from 'rxjs';
+import { throwError, Subject } from 'rxjs';
 import { SensorReading } from '../SensorReading';
-import { retry, catchError } from 'rxjs/operators';
 import { DateRange } from '../DateRange';
 import { TemperatureSensor } from 'src/app/TemperatureSensor';
 import { MoistureSensor } from 'src/app/MoistureSensor';
@@ -13,7 +12,8 @@ import { MoistureSensor } from 'src/app/MoistureSensor';
 export class RestApiService {
 
   //apiURL = 'http://192.168.43.101:9090';
-  apiURL = 'http://localhost:9090';
+  apiURL = 'http://localhost:9090/api';
+  
   dateRangeChanged = new Subject<DateRange>();
   dateRange: DateRange = new DateRange();
 
@@ -63,7 +63,7 @@ export class RestApiService {
 
   addTemperatureSensor(sensor: TemperatureSensor){
     this.http.post(this.apiURL+'/sensor/temperature', sensor).subscribe(
-      response => console.log('poprawnie przeslano', response),
+      response => console.log('response', response),
       error => console.log('error', error),
       () => {
         this.changeTemperatureSensor();
@@ -74,7 +74,7 @@ export class RestApiService {
 
   updateTemperatureSensor(sensor: TemperatureSensor){
     this.http.put(this.apiURL+'/sensor/temperature/'+sensor.id, sensor).subscribe(
-      response => console.log('poprawnie przeslano', response),
+      response => console.log('response', response),
       error => console.log('error', error),
       () => {
         this.changeTemperatureSensor();
@@ -85,7 +85,7 @@ export class RestApiService {
 
   deleteTemperatureSensor(index: number){
     this.http.delete(this.apiURL+'/sensor/temperature/'+index).subscribe(
-      response => console.log('poprawnie przeslano', response),
+      response => console.log('response', response),
       error => console.log('error', error),
       () => {
         this.changeTemperatureSensor();
@@ -96,7 +96,7 @@ export class RestApiService {
 
   addMoistureSensor(sensor: MoistureSensor){
     this.http.post(this.apiURL+'/sensor/moisture', sensor).subscribe(
-      response => console.log('poprawnie przeslano', response),
+      response => console.log('response', response),
       error => console.log('error', error),
       () => {
         this.changeMoistureSensor();
@@ -107,7 +107,7 @@ export class RestApiService {
 
   updateMoistureSensor(sensor: MoistureSensor){
     this.http.put(this.apiURL+'/sensor/moisture/'+sensor.id, sensor).subscribe(
-      response => console.log('poprawnie przeslano', response),
+      response => console.log('response', response),
       error => console.log('error', error),
       () => {
         this.changeMoistureSensor();
@@ -118,7 +118,7 @@ export class RestApiService {
 
   deleteMoistureSensor(index: number){
     this.http.delete(this.apiURL+'/sensor/moisture/'+index).subscribe(
-      response => console.log('poprawnie przeslano', response),
+      response => console.log('response', response),
       error => console.log('error', error),
       () => {
         this.changeMoistureSensor();

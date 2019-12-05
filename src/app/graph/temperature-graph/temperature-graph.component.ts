@@ -1,15 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { interval, Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Chart } from 'angular-highcharts';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { seriesType, YAxisTitleOptions } from 'highcharts';
-import { ReadingService } from 'src/app/reading.service';
 import { RestApiService } from 'src/app/shared/rest-api.service';
-import {DateRange} from 'src/app/DateRange';
-import {SensorReading} from 'src/app/SensorReading';
-import { parse } from 'date-fns';
-
+import { DateRange } from 'src/app/DateRange';
+import { SensorReading } from 'src/app/SensorReading';
 @Component({
   selector: 'app-temperature-graph',
   templateUrl: './temperature-graph.component.html',
@@ -29,7 +23,6 @@ export class TemperatureGraphComponent implements OnInit {
   private subscription: Subscription;
 
   constructor(
-    private httpClient:HttpClient, 
     private restApiService:RestApiService) { }
 
   createChart()
@@ -70,9 +63,6 @@ export class TemperatureGraphComponent implements OnInit {
   ngOnInit() {
     this.subscription = this.restApiService.dateRangeChanged.subscribe(
       (dateRange: DateRange) => {
-        console.log("ZMIENIONNO DATE /temperatureGraphcomponent");
-        console.log(dateRange);
-
         this.initializeMyReadings(dateRange);
       })
 
@@ -97,8 +87,6 @@ export class TemperatureGraphComponent implements OnInit {
   }
 
   getReadingsBetween(myReadings:SensorReading[]){
-    //TO DO
-    console.log("getReadingsBetween() --- TO DO")
     this.chart.destroy();
     this.createChart();
     

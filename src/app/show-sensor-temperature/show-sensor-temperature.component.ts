@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { element } from 'protractor';
 import { TemperatureSensor } from 'src/app/TemperatureSensor';
 import { RestApiService } from 'src/app/shared/rest-api.service';
 import { MatDialog, MatDialogConfig } from '@angular/material';
@@ -18,7 +16,6 @@ export class ShowSensorTemperatureComponent implements OnInit {
   private subscription: Subscription;
 
   constructor(
-    private httpClient:HttpClient,
     private restApiService:RestApiService,
     private dialog:MatDialog) { }
 
@@ -30,7 +27,6 @@ export class ShowSensorTemperatureComponent implements OnInit {
 
     this.subscription = this.restApiService.temperatureSensorChanged.subscribe(
       () => {
-        console.log("ZMIENIONO SENSOR TEMP")
         this.initList();
     })
   }

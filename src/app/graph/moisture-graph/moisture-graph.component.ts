@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Chart } from 'angular-highcharts';
 import { SensorReading } from 'src/app/SensorReading';
 import { DateRange } from 'src/app/DateRange';
@@ -24,7 +23,6 @@ export class MoistureGraphComponent implements OnInit {
   private subscription: Subscription;
 
   constructor(
-    private httpClient:HttpClient, 
     private restApiService:RestApiService) { }
 
     createChart()
@@ -65,13 +63,9 @@ export class MoistureGraphComponent implements OnInit {
     ngOnInit() {
       this.subscription = this.restApiService.dateRangeChanged.subscribe(
         (dateRange: DateRange) => {
-          console.log("ZMIENIONNO DATE /moistureGraphcomponent");
-          console.log(dateRange);
-  
           this.initializeMyReadings(dateRange);
         })
   
-      console.log(this.startDateRange);
       this.initializeMyReadings(this.startDateRange);
     }
 
@@ -92,8 +86,6 @@ export class MoistureGraphComponent implements OnInit {
   }
 
   getReadingsBetween(myReadings:SensorReading[]){
-    //TO DO
-    console.log("getReadingsBetween() --- TO DO")
     this.chart.destroy();
     this.createChart();
     

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { MoistureSensor } from 'src/app/MoistureSensor';
 import { RestApiService } from 'src/app/shared/rest-api.service';
 import { MatDialog, MatDialogConfig } from '@angular/material';
@@ -17,7 +16,6 @@ export class ShowSensorMoistureComponent implements OnInit {
   private subscription: Subscription;
 
   constructor(
-    private httpClient:HttpClient,
     private restApiService:RestApiService,
     private dialog:MatDialog) { }
 
@@ -29,7 +27,6 @@ export class ShowSensorMoistureComponent implements OnInit {
 
     this.subscription = this.restApiService.moistureSensorChanged.subscribe(
       () => {
-        console.log("ZMIENIONO SENSOR MOIST")
         this.initList();
     })
   }

@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -10,36 +8,8 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 })
 export class BodyComponent implements OnInit {
 
-  myDateRange: myDateRange = new myDateRange();
-  dateForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) { }
+  constructor() { }
 
   ngOnInit() {
-    this.dateForm = this.formBuilder.group({
-      'startDate': [this.myDateRange.startDate,[
-
-      ]],
-      'endDate': [this.myDateRange.endDate,[
-
-      ]]
-    });
-
-    
-  }
-
-  onDateFormSubmit(){
-    console.log(this.myDateRange.startDate);
-    console.log(this.myDateRange.endDate);
-    //TO DO
-  }
-}
-
-class myDateRange{
-  public startDate: Date;
-  public endDate: Date;
-  constructor(){
-    this.startDate = new Date();
-    this.endDate = new Date();
   }
 }
